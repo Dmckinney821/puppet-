@@ -13,15 +13,26 @@
             $(document).ready(function(){
                
               var FirstView = Backbone.View.extend({
+                tagName: 'p',
 
                 initialize:function(){
-                    
-                    console.log(this.el)//this is dom
-                    console.log(this.$el)// this is a jquery
+                    console.log(this.el)
+                    this.$el.html('hi stone')
+                    return this;
+                    // console.log(this.el)//this is dom
+                    // console.log(this.$el)// this is a jquery
+
+                    // this.$el.html('hey now')// same as $("#conent").html()
+
+
+                    // $('#content').html('hello')
                     console.log("OWT the fist time")
                  }
                 })
-                var fview = new FirstView();
+                var fview = new FirstView({
+                    el: "#content"
+                });
+                $("#content").html(fview.$el)
             })
         </script>
     </body>
