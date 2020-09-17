@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script src="js/underscore.js"></script>
+        <script src="js/jquery.js"> </script>
+        <script src="js/backbone.js"></script>
+    </body>
+            <div id="content"></div>
+        <script>
+            $(document).ready(function(){
+               
+              var FirstView = Backbone.View.extend({
+
+                initialize:function(){
+                    
+                    console.log(this.el)//this is dom
+                    console.log(this.$el)// this is a jquery
+                    console.log("OWT the fist time")
+                 }
+                })
+                var fview = new FirstView();
+            })
+        </script>
+    </body>
+</html>
