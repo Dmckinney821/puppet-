@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+            <script src="js/underscore.js"></script>
+            <script src="js/jquery.js"> </script>
+            <script src="js/backbone.js"></script>
+    </head>
+        <body>
+            <div id="content"></div>
+            <script type='text/html' id='our-template'>
+                THis is the use of external template in backbone
+            </script>
+        <script>
+
+            $(document).ready(function() {
+
+                var FirstView = Backbone.View.extend({
+                    el: '#content',
+                    // template:_.template($('#our-template').html()),
+                    template: $('#our-template').html(),
+                    initialize: function() {
+                        this.render()
+                    },
+                    render:function() {
+                        template = _.template(this.template)
+                        this.$el.html(this.template)
+                        console.log("this is on")
+                    }
+                })
+
+                var fview = new FirstView()
+            })
+        </script>
+
+
+        </body>
+  
+</html>
