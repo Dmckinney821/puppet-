@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script src="js/underscore.js"></script>
+        <script src="js/jquery.js"> </script>
+        <script src="js/backbone.js"></script>
+    </body>
+        <div id="content"></div>
+
+        <script>
+
+            var Model = Backbone.Model.extend({
+                initialize: function() {
+                    console.log("Mode created")
+                }
+            })
+
+            var fmodel = new Model({
+                    name: "Dan",
+                    youtube: "Dont go there",
+                    team: "Ramrod"
+            });
+            
+            //     fmodel.set({
+            //         name: "Dan",
+            //         youtube: "Dont go there",
+            //         team: "Ramrod"
+            // })
+
+            var ModelView = Backbone.Model.extend({
+                model: fmodel,
+                initialize: function() {
+                    this.render();
+                },
+                render: function() {
+                    console.log(this.model.get("name"))
+                    console.log(this.model.toJSON())
+                }
+            })
+
+
+            var mview = new ModelView();
+
+        </script>
+
+</body>
+</html>
