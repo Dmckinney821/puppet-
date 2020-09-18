@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script src="js/underscore.js"></script>
+        <script src="js/jquery.js"> </script>
+        <script src="js/backbone.js"></script>
+    </body>
+        <div id="content"></div>
+
+        <script type='text/html' id='eventTemplate'>
+            <button id='btnClick'>Click me</button>
+            <br>
+            Just click the button to execute
+        </script>
+
+        <script>
+            $(document).ready(function() {
+
+
+                var EventsView = Backbone.View.extend({
+                    el: "#content",
+                    template:_.template("Hey I am here... <button>Sum all values</button>   <button id='simple'>Click me</button>"),
+                    events: {
+                        // 'click #btnClick': 'OnClick'//<event_name selector>: <callback function>
+                        'mouseover button#simple': 'OnClick'//<event_name selector>: <callback function>
+                    },
+                    OnClick:function() {
+                        alert('alert function running')
+                        // var a = 10;
+                        // var b = 20;
+                        // console.log("Sum of "+a+" + "+b+" is equal to "+(a + b))
+                    },
+                    initialize: function() {
+
+                        this.render()
+                    },
+
+                    render: function() {
+                        this.$el.html(this.template())
+                        console.log("video")
+                    }
+                })
+
+                var eView = new EventsView()
+            })
+
+
+        </script>
+
+
+
+
+</body>
+</html>
