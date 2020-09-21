@@ -1,0 +1,52 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script src="js/underscore.js"></script>
+        <script src="js/jquery.js"> </script>
+        <script src="js/backbone.js"></script>
+    </body>
+        <div id="content"></div>
+
+        <script type='text/template' id='my-template'>
+            <!-- <%= name %>, <%= author %>, <%= id %> -->
+            <% if(id > 5) { %>
+                <%= name %>
+                <%  } else { %>
+                <%= author %>
+                <% } %>
+        </script>
+
+        <script>
+            var Model = Backbone.Model.extend();
+
+            var modelObj = new Model()
+
+            modelObj.set({
+                name: 'Dan tutor',
+                author: 'Stone',
+                id: 6 
+            })
+
+            var ModelView = Backbone.View.extend({
+
+                template:_.template($("#my-template").html()),
+                el: "#content",
+                model: modelObj,
+                initialize: function() {
+                    this.render()
+                },
+                render: function(){
+                    console.log("Vew created");
+                    this.$el.html(this.template(this.model.toJSON()))
+                }
+            })
+
+            var mview = new ModelView();
+        </script>
+</body>
+</html>

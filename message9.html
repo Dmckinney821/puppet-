@@ -1,0 +1,63 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script src="js/underscore.js"></script>
+        <script src="js/jquery.js"> </script>
+        <script src="js/backbone.js"></script>
+    </body>
+        <div id="content"></div>
+
+        <script>
+            var MyModel = Backbone.Model.extend({
+                defaults: {
+                    name: "Stone",
+                    author: "Emmitt"
+                },
+                    initialize: function(){
+                    console.log("model constructor")
+                }
+            });
+
+
+
+            var mymodel = new MyModel({
+                name: 'Only Custom',
+                author: 'This should work'
+            })
+
+            // mymodel.set({
+            //     name:'<p>DAN</p>',
+            //     author: "Stone"
+            // });
+
+            var MyView = Backbone.View.extend({
+                model: mymodel,
+                initialize: function(){
+                    this.render()
+                },
+                render: function(){
+                    // this.model.clear()
+                    // this.model.unset('name')
+                    console.log(this.model.toJSON())
+                    // if(this.model.has('author')){
+                    //     console.log("key exists")
+                    // } else {
+                    //     console.log('key not found')
+                    // }
+                    // console.log(this.model.escape("name"));
+                    // console.log(this.model.get("name"));
+                    // console.log(this.model.has("name"))
+                    // console.log(this.model.toJSON())
+                }
+            })
+
+            var myview = new MyView()
+        </script>
+
+</body>
+</html>
