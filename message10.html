@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script src="js/underscore.js"></script>
+        <script src="js/jquery.js"> </script>
+        <script src="js/backbone.js"></script>
+    </body>
+        <div id="content"></div>
+        <script>
+       
+       var MyModel = Backbone.Model.extend({
+           initialize: function() {
+               console.log("Model Constructor")
+           },
+           validate: function(attribute) {
+            if(attribute.age < 1){
+                return "Age should not be negative";
+                }
+                if(!attribute.name){
+                    return 'name is needed'
+                }
+           }
+       })
+
+        var mymodel = new MyModel({
+            name: "",
+            team: 'florida',
+            age: 10
+        })
+
+        var MyView = Backbone.View.extend({
+            model: mymodel,
+            initialize: function(){
+                this.render()
+            },
+            render: function(attribute){
+                if(this.model.isValid()){
+                    console.log("Valid values are here")
+                } else {
+                    console.log(this.model.validationError)
+                }
+                // console.log(this.model.toJSON())
+            }
+        })
+
+        var myViewObj = new MyView()
+        </script>
+
+</body>
+</html>
