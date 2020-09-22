@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script src="js/underscore.js"></script>
+        <script src="js/jquery.js"> </script>
+        <script src="js/backbone.js"></script>
+    </body>
+        <div id="content"></div>
+        <script>
+
+            var MyModel = Backbone.Model.extend({
+                initialize: function(){
+                    console.log("Model Constructor")
+                    this.bind('change:name', function(model){
+                        console.log("Model changes")
+                    })
+                }
+            })
+
+            var mymodel = new MyModel({
+                name: 'Dan',
+                team:'Gators',
+                age: 11
+            })
+
+            var MyView = Backbone.View.extend({
+                model: mymodel,
+                initialize: function(){
+                    this.render()
+                },
+                render: function(){
+                    this.model.on("change:team", this.modelChangeEvent)
+                },
+                modelChangeEvent: function(){
+                    console.log("team changed")
+                }
+            })
+
+            var myViewObj = new MyView()
+        </script>
+
+
+
+</body>
+</html>
