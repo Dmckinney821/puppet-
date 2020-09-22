@@ -15,19 +15,26 @@
                     this.render()
                 },
                 render: function() {
-                    mymodelObj2.set({
-                        team: 'Florida',
-                        age:11
-                    })
-                    if(mymodelObj2.hasChanged()){
-                        console.log(mymodelObj2.previous('team'))
-                        console.log(mymodelObj2.previousAttributes())
-                        console.log(mymodelObj2.changedAttributes())
-                    } else{
-                        console.log("value not changed")
-                    }
+
+
+                    this.listenTo(this.model,'change', this.modelChange)
+                    // mymodelObj2.set({
+                    //     team: 'Florida',
+                    //     age:11
+                    // })
+                    // if(mymodelObj2.hasChanged()){
+                    //     console.log(mymodelObj2.previous('team'))
+                    //     console.log(mymodelObj2.previousAttributes())
+                    //     console.log(mymodelObj2.changedAttributes())
+                    // } else{
+                    //     console.log("value not changed")
+                    // }
                     // console.log(this.model.toJSON())
                     // console.log('One line is working')
+                },
+                modelChange: function() {
+                    console.log('modelchanged')
+                    console.log(this.model.changedAttributes())
                 }
             })
 

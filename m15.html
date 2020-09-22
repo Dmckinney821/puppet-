@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script src="js/underscore.js"></script>
+        <script src="js/jquery.js"> </script>
+        <script src="js/backbone.js"></script>
+    </body>
+        <div id="content"></div>
+
+        <script>
+
+            var Player = Backbone.Model.extend({
+                defaults: {
+                    name: "Dan",
+                    team: "Florida",
+                    no: 10
+                }
+            })
+
+            var player1 = new Player({
+                name: "stone",
+                team: 'Florida',
+                no: 11
+            })
+
+            var player2 = new Player({
+                name: "sarah",
+                team: 'Florida',
+                no: 13
+            })
+
+            var player3 = new Player({
+                name: "emmitt",
+                team: 'Florida',
+                no: 14
+            })
+
+            var MyCollection = Backbone.Collection.extend({
+                model: Player
+            })
+
+            var myCollectionObj = new MyCollection([player1, player2, player3]);
+
+
+
+            var ProjectView = Backbone.View.extend({
+                collection: myCollectionObj,
+                initialize: function(){
+                    this.render();
+                },
+                render:function(){
+                    console.log("Project View Created")
+                    // console.log(this.collection.toJSON())
+                    _.each(this.collection.toJSON(), function(model) {
+                        console.log("Name: "+model.name+ " Team: "+model.team+" and their number is "+model.no)
+                    })
+                }
+            })
+
+            var mview = new ProjectView();
+        </script>
+
+
+
+</body>
+</html> 
